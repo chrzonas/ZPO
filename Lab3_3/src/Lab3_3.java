@@ -100,7 +100,8 @@ public class Lab3_3
 		
 		System.out.print("Funkcja CutWithOutNonNull: ");
 
-		for (String show : cut) {
+		for (String show : cut)
+		{
 			System.out.print("\"" + show + "\" ");
 		}
 
@@ -108,7 +109,8 @@ public class Lab3_3
 		
 		System.out.print("Funkcja CutWithNonNull: ");
 
-		for (String show : cut2) {
+		for (String show : cut2)
+		{
 			System.out.print("\"" + show + "\" ");
 		}
 
@@ -116,7 +118,8 @@ public class Lab3_3
 		
 		System.out.print("Funkcja CutSplitterGuava: ");
 
-		for (String show : cut3) {
+		for (String show : cut3)
+		{
 			System.out.print("\"" + show + "\" ");
 		}
 
