@@ -12,7 +12,7 @@ public class Get_URL
 		URL nazwiska = null;
 		try
 		{
-			nazwiska = new URL("https://raw.githubusercontent.com/chrzonas/ZPO/master/Lab2_2/nazwiska_lab2_2.txt");
+			nazwiska = new URL("https://raw.githubusercontent.com/chrzonas/ZPO/master/Lab2_2/nazwiska.txt");
 		} catch (MalformedURLException e)
 		{
 			e.printStackTrace();
