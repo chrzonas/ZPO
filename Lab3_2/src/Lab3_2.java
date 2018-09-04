@@ -26,70 +26,69 @@ public class Lab3_2
 
 		hmapPolEng = gson.fromJson(json, hMapType);
 
-		Set<String> klucze = hmapPolEng.keySet();
-		String[] tabKlucze = new String[10];
-		klucze.toArray(tabKlucze);
-		List<String> listaKlucze = new ArrayList<>();
+		Set<String> key = hmapPolEng.keySet();
+		String[] tabKey = new String[10];
+		key.toArray(tabKey);
+		List<String> listKey = new ArrayList<>();
 
-		for (int i = 0; i < tabKlucze.length; i++)
+		for (int i = 0; i < tabKey.length; i++)
 		{
-			listaKlucze.add(tabKlucze[i]);
+			listKey.add(tabKey[i]);
 		}
 
-		Random losowanie = new Random();
+		Random draw = new Random();
 		Scanner in = new Scanner(System.in);
 
-		Map<String, String> pytanieOdpowiedz = new LinkedHashMap<>();
+		Map<String, String> qa = new LinkedHashMap<>();
 
-		int liczbaLosowan = 10;
-		int liczbaPoprawnychOdpowiedzi = 0;
+		int HowManyDraw = 10;
+		int HowManyGoodAnswers = 0;
 
 		System.out.print("Imie: ");
 		String imie = in.nextLine();
 		System.out.print("Nazwisko: ");
 		String nazwisko = in.nextLine();
 
-		System.out.println("******* Test START *******");
+		System.out.println();
+		System.out.println("--- Start Testu ---");
 		System.out.println();
 		long startTime = System.nanoTime();
 
 		for (int i = 0; i < 5; i++)
 		{
-			int index = losowanie.nextInt(liczbaLosowan);
-			System.out.println("Angielskie tlumaczenie: " + listaKlucze.get(index));
-			String odpowiedz = in.nextLine();
+			int index = draw.nextInt(HowManyDraw);
+			System.out.print("Podaj angielskie tlumaczenie " + listKey.get(index) + ": ");
+			String answer = in.nextLine();
 
-			pytanieOdpowiedz.put(listaKlucze.get(index), odpowiedz);
-			odpowiedz = odpowiedz.toLowerCase();
+			qa.put(listKey.get(index), answer);
+			answer = answer.toLowerCase();
 
-			for (String tlumaczenie : hmapPolEng.get(listaKlucze.get(index)))
+			for (String translate : hmapPolEng.get(listKey.get(index)))
 			{
-				if (odpowiedz.equals(tlumaczenie))
+				if (answer.equals(translate))
 				{
-					liczbaPoprawnychOdpowiedzi += 1;
+					HowManyGoodAnswers += 1;
 				}
 			}
 
-			listaKlucze.remove(index);
-			liczbaLosowan -= 1;
+			listKey.remove(index);
+			HowManyDraw -= 1;
 		}
 		
 		long endTime = System.nanoTime() - startTime;
 
-		double endTimeSekundy = (double) endTime / 1000000000;
+		double endTimeSec = (double) endTime / 1000000000;
 
-		Type pytanieOdpowiedzType = new TypeToken<HashMap<String, String>>() {}.getType();
-		String pytanieOdpowiedzJson = gson.toJson(pytanieOdpowiedz, pytanieOdpowiedzType);
+		Type qaType = new TypeToken<HashMap<String, String>>() {}.getType();
+		String qaJson = gson.toJson(qa, qaType);
 
 		WriteFile write = new WriteFile();
 		System.out.println();
-		System.out.println("Trwa zapisywanie do pliku....");
-		write.write(pytanieOdpowiedzJson, imie, nazwisko);
+		write.write(qaJson, imie, nazwisko);
 
+		System.out.println("Liczba poprawnych odpowiedzi: " + HowManyGoodAnswers);
 		System.out.println();
-		System.out.println("Liczba poprawnych odpowiedzi: " + liczbaPoprawnychOdpowiedzi);
-		System.out.println();
-		System.out.println(String.format("Czas testu: %.2f", endTimeSekundy));
+		System.out.println(String.format("Czas testu: %.2f", endTimeSec));
 
 		in.close();
 	}
