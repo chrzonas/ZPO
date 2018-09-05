@@ -1,30 +1,30 @@
-wrz 04, 2018 2:19:20 PM Race run
-FINE: Zawodnik nr 1 Sikora: 301s
-wrz 04, 2018 2:19:23 PM Race run
-FINE: Zawodnik nr 2 Ko³odziej: 283s
-wrz 04, 2018 2:19:25 PM Race run
-FINE: Zawodnik nr 3 Andrzejewski: 315s
-wrz 04, 2018 2:19:28 PM Race run
-FINE: Zawodnik nr 4 Sikorski: 304s
-wrz 04, 2018 2:19:30 PM Race run
-FINE: Zawodnik nr 5 Piotrowski: 323s
-wrz 04, 2018 2:19:32 PM Race run
-FINE: Zawodnik nr 6 Krajewski: 313s
-wrz 04, 2018 2:19:35 PM Race run
-FINE: Zawodnik nr 7 Zakrzewski: 308s
-wrz 04, 2018 2:19:37 PM Race run
-FINE: Zawodnik nr 8 Maciejewski: 320s
-wrz 04, 2018 2:19:40 PM Race run
-FINE: Zawodnik nr 9 Baran: 326s
-wrz 04, 2018 2:19:42 PM Race run
-FINE: Zawodnik nr 10 WoŸniak: 365s
-wrz 04, 2018 2:19:44 PM Race run
-FINE: Zawodnik nr 11 Nowakowski: 295s
-wrz 04, 2018 2:19:47 PM Race run
-FINE: Zawodnik nr 12 Walczak: 345s
-wrz 04, 2018 2:19:49 PM Race run
-FINE: Zawodnik nr 13 Jaworski: 286s
-wrz 04, 2018 2:19:52 PM Race run
-FINE: Zawodnik nr 14 Kamiñski: 282s
-wrz 04, 2018 2:19:54 PM Race run
-FINE: Zawodnik nr 15 Olszewski: 306s
+wrz 05, 2018 11:54:08 AM Race run
+FINE: --- Zawodnik nr 1 Przybylski: 294s. ---
+wrz 05, 2018 11:54:10 AM Race run
+FINE: --- Zawodnik nr 2 Kaczmarek: 351s. ---
+wrz 05, 2018 11:54:12 AM Race run
+FINE: --- Zawodnik nr 3 Cieœlak: 280s. ---
+wrz 05, 2018 11:54:15 AM Race run
+FINE: --- Zawodnik nr 4 Pietrzak: 370s. ---
+wrz 05, 2018 11:54:17 AM Race run
+FINE: --- Zawodnik nr 5 Wieczorek: 313s. ---
+wrz 05, 2018 11:54:20 AM Race run
+FINE: --- Zawodnik nr 6 Paw³owski: 256s. ---
+wrz 05, 2018 11:54:22 AM Race run
+FINE: --- Zawodnik nr 7 Szymañski: 312s. ---
+wrz 05, 2018 11:54:24 AM Race run
+FINE: --- Zawodnik nr 8 Zawadzki: 284s. ---
+wrz 05, 2018 11:54:27 AM Race run
+FINE: --- Zawodnik nr 9 Jakubowski: 320s. ---
+wrz 05, 2018 11:54:29 AM Race run
+FINE: --- Zawodnik nr 10 Lis: 321s. ---
+wrz 05, 2018 11:54:32 AM Race run
+FINE: --- Zawodnik nr 11 KaŸmierczak: 351s. ---
+wrz 05, 2018 11:54:34 AM Race run
+FINE: --- Zawodnik nr 12 Mazurek: 286s. ---
+wrz 05, 2018 11:54:36 AM Race run
+FINE: --- Zawodnik nr 13 D¹browski: 304s. ---
+wrz 05, 2018 11:54:39 AM Race run
+FINE: --- Zawodnik nr 14 W³odarczyk: 279s. ---
+wrz 05, 2018 11:54:41 AM Race run
+FINE: --- Zawodnik nr 15 Olszewski: 352s. ---

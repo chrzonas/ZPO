@@ -17,7 +17,8 @@ public class Log
 			try
 			{
 				f.createNewFile();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				e.printStackTrace();
 			}
@@ -25,17 +26,18 @@ public class Log
 		try
 		{
 			fh = new FileHandler(file_name, false);
-			logger = Logger.getLogger("zadanie6");
+			logger = Logger.getLogger("Lab2_2");
 			logger.addHandler(fh);
 			SimpleFormatter formatter = new SimpleFormatter();
 			fh.setFormatter(formatter);
-		} catch (SecurityException e)
-		{
-			e.printStackTrace();
-		} catch (IOException e)
+		}
+		catch (SecurityException e)
 		{
 			e.printStackTrace();
 		}
-
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

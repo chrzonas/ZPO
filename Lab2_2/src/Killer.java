@@ -3,12 +3,12 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class Killer implements Runnable
 {
-	CountDownLatch licznik = null;
+	CountDownLatch counter = null;
 	ScheduledExecutorService watek;
 
 	public Killer(CountDownLatch licznik, ScheduledExecutorService watek)
 	{
-		this.licznik = licznik;
+		this.counter = licznik;
 		this.watek = watek;
 	}
 
@@ -16,14 +16,15 @@ public class Killer implements Runnable
 	{
 		try
 		{
-			licznik.await();
-		} catch (InterruptedException e)
+			counter.await();
+		}
+		catch (InterruptedException e)
 		{
 			e.printStackTrace();
 		}
 
 		this.watek.shutdownNow();
-		System.out.println("****** KONIEC WYSCIGU ******");
+		System.out.println("--- Koniec ---");
 
 	}
 }

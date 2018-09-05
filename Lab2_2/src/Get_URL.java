@@ -7,13 +7,15 @@ import java.net.URL;
 
 public class Get_URL
 {
-	public static ArrayList<String> odczytNazwisk()
+	public static ArrayList<String> readNames()
 	{
-		URL nazwiska = null;
+		URL names = null;
+		
 		try
 		{
-			nazwiska = new URL("https://raw.githubusercontent.com/chrzonas/ZPO/master/Lab2_2/nazwiska.txt");
-		} catch (MalformedURLException e)
+			names = new URL("https://raw.githubusercontent.com/chrzonas/ZPO/master/Lab2_2/nazwiska.txt");
+		}
+		catch (MalformedURLException e)
 		{
 			e.printStackTrace();
 		}
@@ -22,22 +24,24 @@ public class Get_URL
 		
 		try
 		{
-			in = new BufferedReader(new InputStreamReader(nazwiska.openStream(), "UTF-8"));
-		} catch (IOException e)
+			in = new BufferedReader(new InputStreamReader(names.openStream(), "UTF-8"));
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 
-		String nazwisko;
-		ArrayList<String> listNazwiska = new ArrayList<String>();
+		String name;
+		ArrayList<String> listNames = new ArrayList<String>();
 
 		try
 		{
-			while ((nazwisko = in.readLine()) != null)
+			while ((name = in.readLine()) != null)
 			{
-				listNazwiska.add(nazwisko);
+				listNames.add(name);
 			}
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
@@ -45,11 +49,12 @@ public class Get_URL
 		try
 		{
 			in.close();
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 
-		return listNazwiska;
+		return listNames;
 	}
 }

@@ -8,20 +8,23 @@ public class Lab2_2
 {
 	public static void main(String[] args)
 	{
-		CountDownLatch iloscZawodnikow = new CountDownLatch(15);
+		CountDownLatch howManyCyclists = new CountDownLatch(15);
 
-		Race wyscig = new Race(iloscZawodnikow);
-		Runnable wyscigRunnable = wyscig;
+		Race race = new Race(howManyCyclists);
+		Runnable raceRunnable = race;
+		
+		System.out.println("--- Start ---");
+		System.out.println();
 
 		ScheduledExecutorService watek = Executors.newSingleThreadScheduledExecutor();
 
-		Killer killer = new Killer(iloscZawodnikow, watek);
-		Runnable kil = killer;
+		Killer killer = new Killer(howManyCyclists, watek);
+		Runnable killRunnable = killer;
 
 		ExecutorService watek2 = Executors.newSingleThreadExecutor();
 
-		watek.scheduleAtFixedRate(wyscigRunnable, 0, 2400, TimeUnit.MILLISECONDS);
+		watek.scheduleAtFixedRate(raceRunnable, 0, 2400, TimeUnit.MILLISECONDS);
 
-		watek2.submit(kil);
+		watek2.submit(killRunnable);
 	}
 }

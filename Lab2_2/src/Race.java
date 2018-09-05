@@ -9,129 +9,129 @@ import java.util.logging.Level;
 public class Race implements Runnable
 {
 	Log my_log = new Log("log.txt");
+	CountDownLatch counter = null;
 
-	CountDownLatch licznik = null;
-
-	public Race(CountDownLatch licznik)
+	public Race(CountDownLatch counter)
 	{
-		this.licznik = licznik;
+		this.counter = counter;
 	}
 
-	ArrayList<String> listNazwisko = Get_URL.odczytNazwisk();
+	ArrayList<String> listName = Get_URL.readNames();
+	HashMap<Integer, String> timeName = new HashMap<Integer, String>();
+	Queue<Integer> times = new PriorityQueue<>(15);
 
-	HashMap<Integer, String> czasNazwisko = new HashMap<Integer, String>();
+	int t1 = 380;
+	int t2 = 390;
+	int t3 = 400;
+	
+	String name1;
+	String name2;
+	String name3;
 
-	Queue<Integer> kolejkaCzasy = new PriorityQueue<>(15);
+	int showCounter = 0;
 
-	int pierwszy = 380;
-	int drugi = 390;
-	int trzeci = 400;
-	String nazwisko1, nazwisko2, nazwisko3;
-
-	int iteratorWyswietlania = 0;
-
-	int losowanieCzasu()
+	int losowanietimeu()
 	{
-		int czas;
+		int time;
 		Random r = new Random();
-		czas = (int) (r.nextGaussian() * 30 + 300);
+		time = (int) (r.nextGaussian() * 30 + 300);
 
-		if (czas < 250)
-			czas = 250;
-		if (czas > 370)
-			czas = 370;
+		if (time < 250)
+		{
+			time = 250;
+		}
+		if (time > 370)
+		{
+			time = 370;
+		}
 
-		return czas;
+		return time;
 	}
 
-		String losowanieNazwiska()
-		{
-			Random random = new Random();
-			int rozmiar = listNazwisko.size();
-			int index = random.nextInt(rozmiar);
-			String nazwisko = listNazwisko.get(index);
-			listNazwisko.remove(index);
-			return nazwisko;
-		}
+	String drawName()
+	{
+		Random random = new Random();
+		int size = listName.size();
+		int index = random.nextInt(size);
+		String name = listName.get(index);
+		listName.remove(index);
+		return name;
+	}
 
 	@Override
 	public void run()
 	{
 
-		String nazwisko = losowanieNazwiska();
-		int czas = losowanieCzasu();
+		String name = drawName();
+		int time = losowanietimeu();
 
-		kolejkaCzasy.add(czas);
-		int najlepszyCzas = kolejkaCzasy.poll();
+		times.add(time);
+		int bestTime = times.poll();
 
-		if (czasNazwisko.isEmpty())
-			czasNazwisko.put(czas, nazwisko);
+		if (timeName.isEmpty())
+			timeName.put(time, name);
 		else
 		{
-			if (czasNazwisko.containsKey(czas))
+			if (timeName.containsKey(time))
 			{
-				String staraWartosc = czasNazwisko.get(czas);
-				czasNazwisko.replace(czas, staraWartosc + ", " + nazwisko);
+				String oldTime = timeName.get(time);
+				timeName.replace(time, oldTime + ", " + name);
 			}
 			else
 			{
-				czasNazwisko.put(czas, nazwisko);
+				timeName.put(time, name);
 			}
 		}
 
-		if (najlepszyCzas < pierwszy)
+		if (bestTime < t1)
 		{
-			trzeci = drugi;
-			drugi = pierwszy;
-			pierwszy = najlepszyCzas;
+			t3 = t2;
+			t2 = t1;
+			t1 = bestTime;
 		} 
-		else if (najlepszyCzas < drugi && najlepszyCzas > pierwszy)
+		else if (bestTime < t2 && bestTime > t1)
 		{
-			trzeci = drugi;
-			drugi = najlepszyCzas;
+			t3 = t2;
+			t2 = bestTime;
 		} 
-		else if (najlepszyCzas < trzeci && najlepszyCzas > drugi)
+		else if (bestTime < t3 && bestTime > t2)
 		{
-			trzeci = najlepszyCzas;
+			t3 = bestTime;
 		}
 
 		my_log.logger.setLevel(Level.FINE);
-		my_log.logger.fine("Zawodnik nr " + (iteratorWyswietlania + 1) + " " + nazwisko + ": " + czas + "s");
+		my_log.logger.fine("--- Zawodnik nr " + (showCounter + 1) + " " + name + ": " + time + "s. ---");
 
-		System.out.println("******************************");
-		System.out.println("Zawodnik nr " + (iteratorWyswietlania + 1) + " " + nazwisko + ": " + czas + "s");
-
-		System.out.println("******************************");
+		System.out.println("--- Zawodnik nr " + (showCounter + 1) + " " + name + ": " + time + "s. ---");
 		System.out.println();
 
-		switch (iteratorWyswietlania)
+		switch (showCounter)
 		{
-
 			case (0):
 			{
-				System.out.println("AKTUALNA KLASYFIKACJA:");
-				System.out.println("1 -> " + pierwszy + "s " + czasNazwisko.get(pierwszy));
+				System.out.println("--- Klasyfikacja ---");
+				System.out.println("1. " + t1 + "s. " + timeName.get(t1));
 				System.out.println();
 				break;
 			}
 			case (1):
 			{
-				System.out.println("AKTUALNA KLASYFIKACJA:");
-				System.out.println("1 -> " + pierwszy + "s " + czasNazwisko.get(pierwszy));
-				System.out.println("2 -> " + drugi + "s " + czasNazwisko.get(drugi));
+				System.out.println("--- Klasyfikacja ---");
+				System.out.println("1. " + t1 + "s. " + timeName.get(t1));
+				System.out.println("2. " + t2 + "s. " + timeName.get(t2));
 				System.out.println();
 				break;
 			}
 			default:
-				System.out.println("AKTUALNA KLASYFIKACJA:");
-				System.out.println("1 -> " + pierwszy + "s " + czasNazwisko.get(pierwszy));
-				System.out.println("2 -> " + drugi + "s " + czasNazwisko.get(drugi));
-				System.out.println("3 -> " + trzeci + "s " + czasNazwisko.get(trzeci));
+				System.out.println("--- Klasyfikacja ---");
+				System.out.println("1. " + t1 + "s. " + timeName.get(t1));
+				System.out.println("2. " + t2 + "s. " + timeName.get(t2));
+				System.out.println("3. " + t3 + "s. " + timeName.get(t3));
 				System.out.println();
 		}
 		
-		iteratorWyswietlania += 1;
+		showCounter += 1;
 
-		this.licznik.countDown();
+		this.counter.countDown();
 	}
 }
