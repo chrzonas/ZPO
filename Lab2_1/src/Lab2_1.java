@@ -4,7 +4,6 @@ import java.util.Map;
 
 public class Lab2_1
 {
-	
 	public static double LevQWERTY(String s1, String s2)
 	{
 		double result[][];

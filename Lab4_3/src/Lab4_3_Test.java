@@ -25,7 +25,7 @@ class Lab4_3_Test
 	
 
 	@Test
-	void testNullPointerException()
+	void test1()
 	{
         counts.put("word", 2);
         
@@ -37,7 +37,7 @@ class Lab4_3_Test
 	}
 	
 	@Test
-	void testWord2Word1()
+	void test2()
 	{
 		
         counts.put("word", 2);
@@ -60,7 +60,7 @@ class Lab4_3_Test
 	}
 	
 	@Test
-	void testWordNullWord1()
+	void test3()
 	{
         counts.put("word", null);
         counts1.put("word", null);
@@ -82,7 +82,7 @@ class Lab4_3_Test
 	}
 	
 	@Test
-	void testWord2Null1()
+	void test4()
 	{
         counts.put("word", 2);
         counts1.put("word", 2);
@@ -104,7 +104,7 @@ class Lab4_3_Test
 	}
 	
 	@Test
-	void testNull2Word1()
+	void test5()
 	{
         counts.put(null, 2);
         counts1.put(null, 2);
