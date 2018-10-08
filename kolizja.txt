@@ -1,0 +1,77 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+bool colision(int x, int y, int r, int x_1, int y_1, int x_2, int y_2);
+
+int main()
+{
+    int x = 0;
+    int y = 0;
+    int r = 1;
+
+    int x_1 = 2;
+    int y_1 = 2;
+    int x_2 = 4;
+    int y_2 = 0;
+    int x_3 = x_2;
+    int y_3 = y_1;
+    int x_4 = x_1;
+    int y_4 = y_2;
+
+    if ((colision(x,y,r,x_1,y_1,x_4,y_4) == true)||
+        (colision(x,y,r,x_4,y_4,x_2,y_2) == true)||
+        (colision(x,y,r,x_2,y_2,x_3,y_3) == true)||
+        (colision(x,y,r,x_3,y_3,x_4,y_4) == true))
+    {
+        cout << "Kolizja";
+    }
+    else
+    {
+        cout << "Brak kolizji";
+    }
+
+    return 0;
+}
+
+bool colision(int x, int y, int r, int x_1, int y_1, int x_2, int y_2)
+{
+    bool col = true;
+
+    float n;
+    float d;
+    float dist;
+
+    n = fabs((x_2-x_1)*(y_1-y)-(x_1-x)*(y_2-y_1));
+    d = sqrt((x_2-x_1)-(x_2-x_1)+(y_2-y_1)*(y_2-y_1));
+    dist = n/d;
+
+    if (dist > r)
+    {
+        col = false;
+    }
+
+    n = sqrt((x-x_1)*(x-x_1)+(y-y_1)*(y-y_1));
+
+    if ((n-r) > d)
+    {
+        col = false;
+    }
+
+    n = sqrt((x-x_2)*(x-x_2)+(y-y_2)*(y-y_2));
+
+    if ((n-r) > d)
+    {
+        col = false;
+    }
+
+    if (col == true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
